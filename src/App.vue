@@ -8,6 +8,22 @@
   </div>
 </template>
 
+<script>
+import axios from 'axios';
+export default {
+  name: 'App',
+
+  mounted() {
+      axios.get('https://rickandmortyapi.com/api/character/')
+      .then(response => {
+        console.log('Response api', response.data.results);
+        this.$store.dispatch('apiData', response.data.results);
+      })
+      .catch(error => console.error(error));
+  }
+}
+</script>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
