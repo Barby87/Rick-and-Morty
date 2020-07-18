@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <h1>Lista de personajes</h1>
+  <div class="container mt-5 pt-5">
+    <h1 class="mb-5">Lista de personajes</h1>
 
     <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-4 col-lg-3" v-for="(item, index) in gettingCharacters" :key="index"> 
@@ -9,11 +9,13 @@
           <div class="card-body">
             <h5 class="card-title">{{item.name}}</h5>
 
-            <!-- Botón que Modal 'Opinión' -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Opinar</button>
-
-            <!-- Botón Modal 'Ver más' -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">Ver más</button>
+           <div class="d-flex">
+              <!-- Botón que Modal 'Opinión' -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Opinar</button>
+             
+              <!-- Botón Modal 'Ver más' -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">Ver más</button>
+           </div>
           </div>
         </div>
 
@@ -55,7 +57,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">{{item.name}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                   <span aria-hidden="true">&times;</span>
-                </button>
+                </button>               
               </div>
               <div class="modal-body">
                 <div class="d-flex justify-content-center">
@@ -66,26 +68,14 @@
                       <p><strong>Status:</strong>{{item.status}}</p>
                       <p><strong>Especie</strong> {{item.species}}</p>
                       <p><strong>Ubicación:</strong>{{item.location.name}}</p>
-                      <p><strong>Cantidad de episodios:</strong> {{item.episode.length}</p>
+                      <p><strong>Cantidad de episodios:</strong>{{item.episode.length}}</p>
                       <p><strong>Fecha de creación:</strong>{{item.created}}</p>
                     </div>                 
-                </div>
-                <!-- <div class="row">
-                  <div class="col-md-4">
-                    <img :src="item.image" class="card-img-top" alt="item.name">
-                    <div class="col-md-8">
-                      <p><strong>Status:</strong>{{item.status}}</p>
-                      <p><strong>Especie</strong> {{item.species}}</p>
-                      <p><strong>Ubicación:</strong>{{item.location.name}}</p>
-                      <p><strong>Cantidad de episodios:</strong> {{item.episode.length}}</p>
-                      <p><strong>Fecha de creación:</strong>{{item.created}}</p>
-                    </div>
-                  </div>
-                </div> -->
+                </div> 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Guardar en Favoritos</button>
               </div>
             </div>
           </div>
@@ -120,8 +110,7 @@ export default {
         user: this.userName,
         comment: this.userComment
       }
-
-      this.$store.dispatch('saveOpinion', opinionObject )
+      this.$store.dispatch('saveOpinion', opinionObject)
       // Redireccionando a la ruta 'opinions'
       this.$router.push('/opinions');
     }
@@ -144,5 +133,9 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.d-flex {
+  justify-content: space-evenly;
 }
 </style>
