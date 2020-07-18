@@ -11,7 +11,7 @@ Vue.use(VueRouter);
     component: Home
   },
   {
-    path: '/opinios',
+    path: '/opinions',
     name: 'Opinions',
     component: () => import('../views/Opinions.vue')
   },
@@ -30,6 +30,6 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
 
 export default router;
