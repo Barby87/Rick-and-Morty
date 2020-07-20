@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <NavBar/>
-    <router-view/>
-    <Footer/>
+    <router-view class="my-5 py-5"/>
+    <Footer class="mt-3"/>
   </div>
 </template>
 

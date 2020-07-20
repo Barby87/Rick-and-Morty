@@ -1,26 +1,25 @@
 <template>
-  <div class="container mt-5 pt-5">
+  <div class="container">
     <h1 class="mb-5">Lista de personajes</h1>
 
     <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-4 col-lg-3" v-for="(item, index) in gettingCharacters" :key="index"> 
         <div class="card mb-4" style="width: 18rem;">
           <img :src="item.image" class="card-img-top" alt="item.name">
-          <div class="card-body">
-            <h5 class="card-title">{{item.name}}</h5>
-
-           <div class="d-flex">
-              <!-- Botón que Modal 'Opinión' -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Opinar</button>
+          <div class="card-body bg-dark">
+            <h5 class="card-title font-weight-bold text-white py-3">{{item.name}}</h5>
+           <div class="d-flex pb-2">
+              <!-- Botón Modal 1 'Opinión' -->
+              <button type="button" class="btn btn-secondary" data-toggle="modal" :data-target="`#modal1-${item.id}`" data-whatever="@mdo">Opinar</button>
              
-              <!-- Botón Modal 'Ver más' -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">Ver más</button>
+              <!-- Botón Modal 2 'Ver más' -->
+              <button type="button" class="btn btn-outline-success" data-toggle="modal" :data-target="`#modal2-${item.id}`">Ver más</button>
            </div>
           </div>
         </div>
 
-        <!-- Modal opinión -->       
-        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Modal 1 'Opinión' -->       
+        <div class="modal fade" :id="`modal1-${item.id}`"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -43,19 +42,19 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mx-3" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" @click="opinionData(item)">Guardar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-target="`#modalOpinion-${item.id}`" @click="opinionData(item.id)">Guardar</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Modal 'Ver más' -->
-        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Modal 2 'Ver más' -->
+        <div class="modal fade" :id="`modal2-${item.id}`"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{item.name}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>               
               </div>
@@ -107,6 +106,7 @@ export default {
     opinionData(item) {
       let opinionObject = {
         characterName: item.name,
+        characterId: item.id,
         user: this.userName,
         comment: this.userComment
       }

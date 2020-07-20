@@ -5,14 +5,14 @@
     <div class="card">
       <div class="card-header" id="headingOne">
         <h5 class="mb-0">
-          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Opinión sobre: {{item.characterName}}. Realizado por: {{item.user}}
-          </button>
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Opinión sobre: {{item.characterName}}. Realizado por: {{item.user}}
+            </button>
         </h5>
       </div>
 
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-        <div class="card-body">
+        <div class="card-body text-justify">
           {{item.comment}}
         </div>
       </div>
