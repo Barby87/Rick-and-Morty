@@ -41,6 +41,11 @@ export default new Vuex.Store({
       // compara el valor de id enviado con el id del elemento del array
       let fav = state.favorites.findIndex(value => value.id === id);
       state.favorites.splice(fav, 1);
+    },
+
+    deletingOpinion(state, id) {
+      let opinion = state.comments.findIndex(value => value.characterId === id);
+      state.comments.splice(opinion, 1);
     }
   },
 
@@ -59,6 +64,10 @@ export default new Vuex.Store({
 
     deleteFavorite(context, id) {
       context.commit('deletingFavorite', id);
+    },
+
+    deleteOpinion(context, id) {
+      context.commit('deletingOpinion', id);
     }
   }
 });

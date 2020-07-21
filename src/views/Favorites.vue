@@ -16,6 +16,7 @@
       </div>
     </div>
 
+    <!-- Alert -->
     <div class="alert alert-warning mt-5" role="alert" v-else>
       Aún no existen favoritos seleccionados por el usuario
     </div>

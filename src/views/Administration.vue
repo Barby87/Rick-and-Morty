@@ -21,7 +21,31 @@
             <td>{{item.characterName}}</td>
             <td>{{item.comment}}</td>
             <td>{{item.user}}</td>
-            <td><button class="btn btn-danger">Eliminar</button></td>
+            <td>
+              <button type="button" class="btn btn-danger" data-toggle="modal" :data-target="`#deleteModal-${item.characterId}`">
+              Eliminar</button>
+
+               <!-- Modal 'Eliminar -->
+              <div class="modal fade" :id="`deleteModal-${item.characterId}`" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">¿Deseas eliminar comentario?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      ...
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteComment(item.characterId)">Sí</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
             <td><button class="btn btn-primary">Editar</button></td>
           </tr>
         </tbody>
@@ -42,6 +66,12 @@ export default {
   computed: {
     arrayOpinions() {
       return this.$store.getters.sendComments;
+    }
+  },
+
+  methods: {
+    deleteComment(id) {
+      this.$store.dispatch('deleteOpinion', id);
     }
   }
 
