@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-dark text-white d-flex py-3 fixed-bottom">
+  <footer class="bg-info text-white d-flex py-3 fixed-bottom">
     <div class="container">
       <p>Página web creada por: Bárbara Cáceres</p>
 

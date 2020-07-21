@@ -1,16 +1,16 @@
 <template>
-  <div class="container background">
-    <h1 class="mb-5">Lista de personajes</h1>
+  <div class="container">
+    <h1 class="my-5">Lista de personajes</h1>
 
     <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-4 col-lg-3" v-for="(item, index) in gettingCharacters" :key="index"> 
         <div class="card mb-4" style="width: 18rem;">
           <img :src="item.image" class="card-img-top" alt="item.name">
           <div class="card-body bg-dark">
-            <h5 class="card-title font-weight-bold text-white py-3">{{item.name}}</h5>
+            <h5 class="card-title font-weight-bold text-white text-center py-3">{{item.name}}</h5>
            <div class="d-flex pb-2">
               <!-- Botón Modal 1 'Opinión' -->
-              <button type="button" class="btn btn-secondary" data-toggle="modal" :data-target="`#modal1-${item.id}`" data-whatever="@mdo">Opinar</button>
+              <button type="button" class="btn btn-warning" data-toggle="modal" :data-target="`#modal1-${item.id}`" data-whatever="@mdo">Opinar</button>
              
               <!-- Botón Modal 2 'Ver más' -->
               <button type="button" class="btn btn-outline-success" data-toggle="modal" :data-target="`#modal2-${item.id}`">Ver más</button>
@@ -42,7 +42,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mx-3" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" data-target="`#modalOpinion-${item.id}`" @click="opinionData(item)">Guardar</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" data-target="`#modalOpinion-${item.id}`" @click="opinionData(item)">Guardar</button>
               </div>
             </div>
           </div>
@@ -53,7 +53,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{item.name}}</h5>
+                <h5 class="modal-title font-weight-bold" id="exampleModalLabel">{{item.name}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>               
@@ -74,7 +74,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" @click="favoritesData(item)">Guardar en Favoritos</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" @click="favoritesData(item)">Guardar en Favoritos</button>
               </div>
             </div>
           </div>
@@ -104,7 +104,8 @@ export default {
 
   methods: {
     opinionData(item) {
-      let opinionObject = {
+      if(this.userComment.length > 5) {
+        let opinionObject = {
         characterName: item.name,
         characterId: item.id,
         user: this.userName,
@@ -113,6 +114,9 @@ export default {
       this.$store.dispatch('saveOpinion', opinionObject);
       // Redireccionando a la ruta 'opinions'
       this.$router.push('/opinions');
+      } else {
+        alert('Debe ingresar datos para guardar un comentario');
+      }
     },
 
     favoritesData(item) {
@@ -131,20 +135,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 
 .d-flex {
   justify-content: space-evenly;
