@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container background">
     <h1 class="mb-5">Lista de personajes</h1>
 
     <div class="row">
@@ -42,7 +42,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mx-3" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" data-target="`#modalOpinion-${item.id}`" @click="opinionData(item.id)">Guardar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-target="`#modalOpinion-${item.id}`" @click="opinionData(item)">Guardar</button>
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar en Favoritos</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" @click="favoritesData(item)">Guardar en Favoritos</button>
               </div>
             </div>
           </div>
@@ -110,11 +110,22 @@ export default {
         user: this.userName,
         comment: this.userComment
       }
-      this.$store.dispatch('saveOpinion', opinionObject)
+      this.$store.dispatch('saveOpinion', opinionObject);
       // Redireccionando a la ruta 'opinions'
       this.$router.push('/opinions');
+    },
+
+    favoritesData(item) {
+      let favObject = {
+        name: item.name,
+        image: item.image,
+        gender: item.gender
+      }
+      this.$store.dispatch('saveFavorites', favObject);
+      // Redireccionando a la ruta 'favoritos'
+      this.$router.push('/favorites');
     }
-  }
+   }
 }
 </script>
 
@@ -138,4 +149,5 @@ a {
 .d-flex {
   justify-content: space-evenly;
 }
+
 </style>

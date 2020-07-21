@@ -19,10 +19,16 @@ Vue.use(VueRouter);
     path: '/favorites',
     name: 'Favorites',
     component: () => import('../views/Favorites.vue')
-  },{
+  },
+  {
     path: '/administration',
     name: 'Administration',
     component: () => import('../views/Administration.vue')
+  },
+  {
+    path: '*',
+    name: 'Error404',
+    component: () => import('../views/Error404.vue')
   }
 ];
 

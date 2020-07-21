@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     characters: [],
-    comments: []
+    comments: [],
+    favorites: []
   },
 
   getters: {
@@ -16,6 +17,10 @@ export default new Vuex.Store({
 
     sendComments(state) {
       return state.comments;
+    },
+
+    sendFavorites(state) {
+      return state.favorites;
     }
   },
 
@@ -26,7 +31,12 @@ export default new Vuex.Store({
 
     savingOpinionObject(state, opinionObjectReceived) {
       state.comments.push(opinionObjectReceived);
+    },
+
+    savingFavObject(state, favObjectReceived) {
+      state.favorites.push(favObjectReceived);
     }
+
   },
 
   actions: {
@@ -36,6 +46,10 @@ export default new Vuex.Store({
 
     saveOpinion(context, opinionObjectReceived ) {
       context.commit('savingOpinionObject', opinionObjectReceived);
+    },
+
+    saveFavorites(context, favObjectReceived) {
+      context.commit('savingFavObject', favObjectReceived);
     }
   }
 });
