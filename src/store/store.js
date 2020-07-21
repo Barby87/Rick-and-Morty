@@ -35,8 +35,13 @@ export default new Vuex.Store({
 
     savingFavObject(state, favObjectReceived) {
       state.favorites.push(favObjectReceived);
-    }
+    },
 
+    deletingFavorite(state, id) {
+      // compara el valor de id enviado con el id del elemento del array
+      let fav = state.favorites.findIndex(value => value.id === id);
+      state.favorites.splice(fav, 1);
+    }
   },
 
   actions: {
@@ -50,6 +55,10 @@ export default new Vuex.Store({
 
     saveFavorites(context, favObjectReceived) {
       context.commit('savingFavObject', favObjectReceived);
+    },
+
+    deleteFavorite(context, id) {
+      context.commit('deletingFavorite', id);
     }
   }
 });

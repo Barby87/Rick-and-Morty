@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-if="arrayOpinions.length > 0">
-      <h1>Administración</h1>
+      <h1 class="my-5">Administración</h1>
       
       <!-- Tabla -->
       <table class="table table-striped">
@@ -29,7 +29,7 @@
     </div>
 
     <!-- Alert -->
-    <div class="alert alert-warning" role="alert" v-else>
+    <div class="alert alert-warning mt-5" role="alert" v-else>
       Aún no existen datos para administrar
     </div>
   </div>

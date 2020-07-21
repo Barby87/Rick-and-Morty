@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div class="alert alert-warning" role="alert" v-else>
+  <div class="alert alert-warning mt-5" role="alert" v-else>
     Aún no existen opiniones de los usuarios
   </div>
 </div>

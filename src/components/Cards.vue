@@ -3,7 +3,7 @@
     <h1 class="my-5">Lista de personajes</h1>
 
     <div class="row">
-      <div class="col-sm-12 col-md-6 col-lg-4 col-lg-3" v-for="(item, index) in gettingCharacters" :key="index"> 
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-between" v-for="(item, index) in gettingCharacters" :key="index"> 
         <div class="card mb-4" style="width: 18rem;">
           <img :src="item.image" class="card-img-top" alt="item.name">
           <div class="card-body bg-dark">
@@ -64,11 +64,11 @@
                       <img :src="item.image" class="card-img-top" alt="item.name">
                     </div>
                     <div class="col-8 col-sm-6">
-                      <p><strong>Status:</strong>{{item.status}}</p>
-                      <p><strong>Especie</strong> {{item.species}}</p>
-                      <p><strong>Ubicación:</strong>{{item.location.name}}</p>
-                      <p><strong>Cantidad de episodios:</strong>{{item.episode.length}}</p>
-                      <p><strong>Fecha de creación:</strong>{{item.created}}</p>
+                      <p><strong>Status: </strong>{{item.status}}</p>
+                      <p><strong>Especie: </strong> {{item.species}}</p>
+                      <p><strong>Ubicación: </strong>{{item.location.name}}</p>
+                      <p><strong>Cantidad de episodios: </strong>{{item.episode.length}}</p>
+                      <p><strong>Fecha de creación: </strong>{{item.created}}</p>
                     </div>                 
                 </div> 
               </div>
@@ -121,6 +121,7 @@ export default {
 
     favoritesData(item) {
       let favObject = {
+        id: item.id,
         name: item.name,
         image: item.image,
         gender: item.gender

@@ -33,6 +33,7 @@ export default {
 <style lang="scss" scoped>
 .ranchers { 
     font-family: 'Ranchers', cursive;
+    font-size: 2rem;
 }
 
 // Importación font-family Google Fonts
