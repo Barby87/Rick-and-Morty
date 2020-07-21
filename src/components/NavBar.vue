@@ -2,6 +2,7 @@
   <div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top py-3">
         <div class="container">
+            <!-- Logo que redirige a 'Home' -->
             <router-link class="navbar-brand font-weigth-bold shadows" to='/'>Rick <span class="span_logo">And</span> Morty</router-link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -42,6 +43,5 @@ export default {
 }
 
 // Importación font-family Google Fonts Shadows Into Light
-
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 </style>

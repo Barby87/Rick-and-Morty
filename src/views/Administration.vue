@@ -3,7 +3,7 @@
     <div v-if="arrayOpinions.length > 0">
       <h1 class="my-5">Administración</h1>
       
-      <!-- Tabla -->
+      <!-- Tabla dinámica-->
       <table class="table table-striped">
         <thead>
           <tr>
@@ -35,18 +35,17 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <div class="modal-body">
-                      ...
-                    </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteComment(item.characterId)">Sí</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteComment(item.characterId)">Ok</button>
                     </div>
                   </div>
                 </div>
               </div>
             </td>
             <td><button class="btn btn-primary">Editar</button></td>
+
+            <!-- Modal 'Editar' -->
           </tr>
         </tbody>
       </table>      
