@@ -1,19 +1,19 @@
 <template>
   <div>
-      <CardFavorite/>
+    <ModalEdition/>
   </div>
 </template>
 
 <script>
-import CardFavorite from '@/components/CardFavorite';
+import ModalEdition from '@/components/ModalEdition';
 export default {
     name: 'Administration',
     components: {
-        CardFavorite
+        ModalEdition
     }
 }
 </script>
-   
+
 <style>
 
 </style>

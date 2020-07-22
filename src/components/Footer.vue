@@ -18,6 +18,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+footer {
+  position: relative;
+}
 
+$info: #05c5ab;
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss'
 </style>

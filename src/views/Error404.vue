@@ -1,18 +1,15 @@
 <template>
   <div>
-      <img :src="imgError" alt="">    
+    <ImageError404/>
   </div>
 </template>
 
 <script>
-// Importando imagen de error 404
-import Error404 from '../assets/img/error404.jpg.webp';
+import ImageError404 from "@/components/ImageError404";
 export default {
     name: 'Error404',
-    data () {
-        return {
-            imgError: Error404
-        }
+    components: {
+        ImageError404
     }
 }
 </script>

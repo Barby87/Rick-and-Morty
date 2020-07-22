@@ -74,7 +74,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal" @click="favoritesData(item)">Guardar en Favoritos</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" @click="favorite(item)">Guardar en Favoritos</button>
               </div>
             </div>
           </div>
@@ -112,6 +112,7 @@ export default {
         alert('Debe agregar un comentario');
       } else {
         if(this.userComment && this.userName && this.userComment.length > 5) {
+          // Objeto  con datos que ingresó el usuario y los datos del personaje, los que serán enviados a store
           let opinionObject = {
             characterName: item.name,
             characterId: item.id,
@@ -126,14 +127,8 @@ export default {
       } 
     },
 
-    favoritesData(item) {
-      let favObject = {
-        id: item.id,
-        name: item.name,
-        image: item.image,
-        gender: item.gender
-      }
-      this.$store.dispatch('saveFavorites', favObject);
+    favorite(item) {
+      this.$store.dispatch('saveFavorites', item);
       // Redireccionando a la ruta 'favoritos'
       this.$router.push('/favorites');
     }
@@ -148,4 +143,7 @@ export default {
   justify-content: space-evenly;
 }
 
+$warning: #f3ff48;
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss'
 </style>

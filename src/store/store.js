@@ -33,19 +33,24 @@ export default new Vuex.Store({
       state.comments.push(opinionObjectReceived);
     },
 
-    savingFavObject(state, favObjectReceived) {
-      state.favorites.push(favObjectReceived);
+    savingFavObject(state, favReceived) {
+      state.favorites.push(favReceived);
     },
 
-    deletingFavorite(state, id) {
-      // compara el valor de id enviado con el id del elemento del array
-      let fav = state.favorites.findIndex(value => value.id === id);
-      state.favorites.splice(fav, 1);
+    deletingFavorite(state, index) {
+      state.favorites.splice(index, 1);
     },
 
     deletingOpinion(state, id) {
+      // compara el valor de id enviado con el id del elemento del array
       let opinion = state.comments.findIndex(value => value.characterId === id);
       state.comments.splice(opinion, 1);
+    },
+
+    editingOpinion(state, newCommentReceived) {
+      let filterId = state.comments.find(element => element.characterId === newCommentReceived.characterId);
+      filterId.user = newCommentReceived.user;
+      filterId.comment = newCommentReceived.comment;
     }
   },
 
@@ -58,16 +63,20 @@ export default new Vuex.Store({
       context.commit('savingOpinionObject', opinionObjectReceived);
     },
 
-    saveFavorites(context, favObjectReceived) {
-      context.commit('savingFavObject', favObjectReceived);
+    saveFavorites(context, favReceived) {
+      context.commit('savingFavObject', favReceived);
     },
 
-    deleteFavorite(context, id) {
-      context.commit('deletingFavorite', id);
+    deleteFavorite(context, index) {
+      context.commit('deletingFavorite', index);
     },
 
     deleteOpinion(context, id) {
       context.commit('deletingOpinion', id);
+    },
+
+    editOpinion(context, newCommentReceived) {
+      context.commit('editingOpinion', newCommentReceived);
     }
   }
 });
