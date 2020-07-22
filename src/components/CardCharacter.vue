@@ -6,14 +6,14 @@
       <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 d-flex" v-for="(item, index) in gettingCharacters" :key="index"> 
         <div class="card mb-4" style="width: 18rem;">
           <img :src="item.image" class="card-img-top" alt="item.name">
-          <div class="card-body bg-dark">
+          <div class="card-body bg-secondary">
             <h5 class="card-title font-weight-bold text-white text-center py-3">{{item.name}}</h5>
            <div class="d-flex pb-2">
               <!-- Botón Modal 1 'Opinión' -->
               <button type="button" class="btn btn-warning" data-toggle="modal" :data-target="`#modal1-${item.id}`" data-whatever="@mdo">Opinar</button>
              
               <!-- Botón Modal 2 'Ver más' -->
-              <button type="button" class="btn btn-outline-success" data-toggle="modal" :data-target="`#modal2-${item.id}`">Ver más</button>
+              <button type="button" class="btn btn-success" data-toggle="modal" :data-target="`#modal2-${item.id}`">Ver más</button>
            </div>
           </div>
         </div>
