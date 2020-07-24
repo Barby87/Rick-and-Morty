@@ -42,7 +42,6 @@ a {
   &:hover {
     color: rgb(169, 245, 250);
   }
-  
 }
 
 // $info: #05c5ab;

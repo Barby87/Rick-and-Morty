@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     characters: [],
     comments: [],
-    favorites: []
+    favorites: [],
+    searching: ''
   },
 
   getters: {
@@ -41,16 +42,17 @@ export default new Vuex.Store({
       state.favorites.splice(index, 1);
     },
 
-    deletingOpinion(state, id) {
+    deletingOpinion(state, index) {
       // compara el valor de id enviado con el id del elemento del array
-      let opinion = state.comments.findIndex(value => value.characterId === id);
-      state.comments.splice(opinion, 1);
+      console.time("Duración");
+      state.comments.splice(index, 1);
+      console.timeEnd("Duración");
     },
 
     editingOpinion(state, newCommentReceived) {
-      let filterId = state.comments.find(element => element.characterId === newCommentReceived.characterId);
-      filterId.user = newCommentReceived.user;
-      filterId.comment = newCommentReceived.comment;
+      // Modificando valores del objeto
+      state.comments[newCommentReceived.user] = newCommentReceived.user;
+      state.comments[newCommentReceived.commment] = newCommentReceived.comment;
     }
   },
 
@@ -71,8 +73,8 @@ export default new Vuex.Store({
       context.commit('deletingFavorite', index);
     },
 
-    deleteOpinion(context, id) {
-      context.commit('deletingOpinion', id);
+    deleteOpinion(context, index) {
+      context.commit('deletingOpinion', index);
     },
 
     editOpinion(context, newCommentReceived) {

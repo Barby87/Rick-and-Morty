@@ -2,17 +2,17 @@
   <div class="container my-5">
     <div v-if="arrayComments.length > 0">
       <h1 class="my-5">Opiniones de usuarios</h1>
-      <div :id="`accordion-${item.characterId}`" v-for="(item, index) in arrayComments" :key="index">
+      <div :id="`accordion-${index}`" v-for="(item, index) in arrayComments" :key="index">
         <div class="card">
           <div class="card-header" id="headingOne">
             <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" :data-target="`#collapse-${item.characterId}`" aria-expanded="true" :aria-controls="`collapse-${item.characterId}`">
-                  Opinión sobre: {{item.characterName}} | Realizado por: {{item.user}}
+                <button class="btn btn-link" data-toggle="collapse" :data-target="`#collapse-${index}`" aria-expanded="true" :aria-controls="`collapse-${index}`">
+                  Opinión sobre: <strong>{{item.characterName}}</strong> | Realizado por: <strong>{{item.user}}</strong>
                 </button>
             </h5>
           </div>
       
-          <div :id="`collapse-${item.characterId}`" class="collapse show px-3" aria-labelledby="headingOne" :data-parent="`#accordion-${item.characterId}`">
+          <div :id="`collapse-${index}`" class="collapse show px-3" aria-labelledby="headingOne" :data-parent="`#accordion-${index}`">
             <div class="card-body text-justify">
               {{item.comment}}
             </div>
@@ -43,14 +43,14 @@ export default {
 <style scoped lang="scss">
 
 .btn-link {
-    font-weight: bold!important;
-    color: #000000!important;
+    // font-weight: bold!important;
+    color: rgb(6, 3, 199)!important;
     text-decoration: none!important;
-}
 
-.btn-link:hover {
-    color: #0a5db6!important;
-    text-decoration: none!important;
+    &:hover {
+      color: #000000!important;
+      text-decoration: none!important;
+    }
 }
 
 </style>

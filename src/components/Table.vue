@@ -4,7 +4,7 @@
       <h1 class="my-5">Administración</h1>
       
       <!-- Tabla dinámica-->
-      <table class="table table-striped">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th>N°</th>
@@ -22,22 +22,22 @@
             <td>{{item.comment}}</td>
             <td>{{item.user}}</td>
             <td>
-              <button type="button" class="btn btn-danger" data-toggle="modal" :data-target="`#deleteModal-${item.characterId}`">
+              <button type="button" class="btn btn-danger" data-toggle="modal" :data-target="`#deleteModal-${index}`">
               Eliminar</button>
 
                <!-- Modal 'Eliminar -->
-              <div class="modal fade" :id="`deleteModal-${item.characterId}`" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" :id="`deleteModal-${index}`" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">¿Deseas eliminar comentario?</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">¿Deseas eliminar comentario realizado por {{item.user}}?</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteComment(item.characterId)">Eliminar</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteComment(index)">Eliminar</button>
                     </div>
                   </div>
                 </div>
@@ -45,14 +45,14 @@
             </td>
 
             <td>
-              <button class="btn btn-primary" @click="editEvent(item)">Editar</button>
+              <button class="btn btn-info" @click="editEvent(index)">Editar</button>
             </td>
           </tr>
         </tbody>
       </table>
 
       <!-- Botón para borrar opiniones -->
-      <button type="button" class="btn btn-primary" @click="restart">Reiniciar</button>     
+      <button type="button" class="btn btn-warning" @click="restart">Reiniciar</button>     
     </div>
 
     <!-- Alert -->
@@ -73,22 +73,30 @@ export default {
   },
 
   methods: {
-    deleteComment(id) {
-      this.$store.dispatch('deleteOpinion', id);
+    deleteComment(index) {
+      this.$store.dispatch('deleteOpinion', index);
     },
 
-    editEvent(item) {
-      this.$router.push(`/edit-opinion/${item.characterId}`);
+    editEvent(index) {
+      this.$router.push(`/edit-opinion/:${index}`);
     },
 
     restart(){
       this.$emit('restartAll');
     }
   }
-
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+tbody {
+  tr {
+    &:hover {
+      background-color: rgb(225, 255, 245)!important;
+    }
+  }
+  
+}
 
+@import '../../node_modules/bootstrap/scss/bootstrap.scss'
 </style>

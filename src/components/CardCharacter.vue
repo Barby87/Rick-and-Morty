@@ -3,7 +3,7 @@
     <h1 class="my-5">Lista de personajes</h1>
 
     <div class="row">
-      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 d-flex" v-for="(item, index) in gettingCharacters" :key="index"> 
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 d-flex" v-for="(item, index) in apiData" :key="index"> 
         <div class="card mb-4" style="width: 18rem;">
           <img :src="item.image" class="card-img-top" alt="item.name">
           <div class="card-body bg-secondary">
@@ -97,8 +97,10 @@ export default {
   },
 
   computed: {
-    gettingCharacters() {
-      return this.$store.getters.sendCharacters;
+    apiData() {
+      return this.$store.getters.sendCharacters.filter((data) => {
+        return data.name.toLowerCase().includes(this.$store.state.searching.toLowerCase())
+      });
     }
   },
 
@@ -110,8 +112,12 @@ export default {
         alert('Debe ingresar su nombre para guardar un comentario');
       } else if(!this.userComment) {
         alert('Debe agregar un comentario');
+      } else if(this.userName.length <= 2) {
+        alert('Su nombre debe tener más de 2 caracteres')
+      } else if(this.userComment.length <= 20) {
+        alert('Su comentario de contener como mínimo 20 caracteres')
       } else {
-        if(this.userComment && this.userName && this.userComment.length > 5) {
+        // if(this.userComment && this.userName && this.userComment.length > 20) {
           // Objeto  con datos que ingresó el usuario y los datos del personaje, los que serán enviados a store
           let opinionObject = {
             characterName: item.name,
@@ -123,7 +129,7 @@ export default {
           this.$store.dispatch('saveOpinion', opinionObject);
           // Redireccionando a la ruta 'opinions'
           this.$router.push('/opinions');
-        }
+        // }
       } 
     },
 

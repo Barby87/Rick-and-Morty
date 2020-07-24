@@ -30,10 +30,10 @@ Vue.use(VueRouter);
     alias: ['/administracion', '/admin', '/tabla']
   },
   {
-    path: '/edit-opinion/:id',
+    path: '/edit-opinion/:index',
     name: 'EditOpinion',
     component: () => import('../views/EditOpinion.vue'),
-    alias: ['/editar-opinion', '/editar']
+    alias: ['/editar-opinion', '/editar', '/edit']
   },
   {
     path: '*',

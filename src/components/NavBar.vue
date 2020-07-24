@@ -8,7 +8,14 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Búsqueda personaje -->
+                
                 <ul class="navbar-nav ml-auto">
+                   <li>
+                       <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control input-group mr-sm-2" type="search" placeholder="Búsqueda de personaje" aria-label="Search" v-model="searching">
+                       </form>
+                   </li>
                     <li class="nav-item">
                         <router-link class="nav-link font-weight-bold" to='/opinions'>Opiniones</router-link>
                     </li>
@@ -27,7 +34,18 @@
 
 <script>
 export default {
+    name: 'NavBar',
+    data() {
+        return {
+            searching: ''
+        }
+    },
 
+    watch: {
+        searching() {
+            this.$store.state.searching = this.searching;
+        }
+    }
 }
 </script>
 
