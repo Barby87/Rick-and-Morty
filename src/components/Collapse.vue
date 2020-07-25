@@ -44,7 +44,7 @@ export default {
 
 .btn-link {
     // font-weight: bold!important;
-    color: rgb(3, 1, 105)!important;
+    color: rgb(4, 1, 148)!important;
     text-decoration: none!important;
 
     &:hover {

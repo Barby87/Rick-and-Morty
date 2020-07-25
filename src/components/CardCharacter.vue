@@ -86,6 +86,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 export default {
   name: 'Cards',
 
@@ -107,17 +108,36 @@ export default {
   methods: {
     opinionData(item) {
       if(!this.userName && !this.userComment) {
-        alert('Debe ingresar datos para guardar un comentario');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Debe ingresar datos para guardar un comentario',
+        });
       } else if(!this.userName) {
-        alert('Debe ingresar su nombre para guardar un comentario');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Debe ingresar su nombre para guardar un comentario',
+        });
       } else if(!this.userComment) {
-        alert('Debe agregar un comentario');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Debe agregar un comentario',
+        });
       } else if(this.userName.length <= 2) {
-        alert('Su nombre debe contener más de 2 caracteres')
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Su nombre debe contener al menos 2 caracteres',
+        });
       } else if(this.userComment.length <= 20) {
-        alert('Su comentario de contener como mínimo 20 caracteres')
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Su comentario de contener como mínimo 20 caracteres',
+        });
       } else {
-        // if(this.userComment && this.userName && this.userComment.length > 20) {
           // Objeto  con datos que ingresó el usuario y los datos del personaje, los que serán enviados a store
           let opinionObject = {
             characterName: item.name,
@@ -129,7 +149,6 @@ export default {
           this.$store.dispatch('saveOpinion', opinionObject);
           // Redireccionando a la ruta 'opinions'
           this.$router.push('/opinions');
-        // }
       } 
     },
 

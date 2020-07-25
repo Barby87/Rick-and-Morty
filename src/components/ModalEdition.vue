@@ -62,7 +62,7 @@ export default {
 
     editComment() {
 
-      // if (this.newNameUser &&  this.newComment) {
+      if (this.newNameUser && this.newComment) {
         let newCommentData = {
           user: this.newNameUser,
           comment: this.newComment,
@@ -72,9 +72,10 @@ export default {
         this.$store.dispatch('editOpinion', newCommentData);
         this.$router.push('/administration');
 
-      // } else {
-      //   alert("Ingrese datos para modificar");
-      // }
+      } else {
+        alert('Ingrese datos para modificar');
+        this.$router.push('/administration');
+      }
     },
   },
 };
