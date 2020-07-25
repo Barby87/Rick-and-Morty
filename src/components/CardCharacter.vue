@@ -113,7 +113,7 @@ export default {
       } else if(!this.userComment) {
         alert('Debe agregar un comentario');
       } else if(this.userName.length <= 2) {
-        alert('Su nombre debe tener más de 2 caracteres')
+        alert('Su nombre debe contener más de 2 caracteres')
       } else if(this.userComment.length <= 20) {
         alert('Su comentario de contener como mínimo 20 caracteres')
       } else {

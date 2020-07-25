@@ -5,10 +5,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5
-              class="modal-title"
-              id="exampleModalLabel"
-            >Editando opinión: {{infoOpinion.characterName}}</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Editando opinión: {{objectOpinion.characterName}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -26,7 +23,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary mt-3 mx-5" data-dismiss="modal" @click="returnToAdmin">Volver</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="returnToAdmin">Volver</button>
             <!-- Otra forma botón volver, con router-link demora un poco más -->
             <!-- <router-link to="/administration" tag="button" class="btn btn-secondary">Volver</router-link> -->
             <button type="button" class="btn btn-success" data-dismiss="modal" @click="editComment">Guardar</button>
@@ -46,38 +43,38 @@ export default {
       // Forma directa
       newNameUser: '',
       newComment: '',
-      infoOpinion: {}
+      objectOpinion: {}
     }
   },
-
-  // Activando la ventana modal cuando se monte la vista
+  
   mounted() {
-    this.infoOpinion = this.$store.getters.sendComments[this.$route.params.index]
+    this.objectOpinion = this.$store.getters.sendComments[this.$route.params.index];
+    this.newNameUser = this.objectOpinion.user;
+    this.newComment = this.objectOpinion.comment;
+    // Activando la ventana modal cuando se monte la vista
     $("#editModal").modal("show");
-    this.newNameUser = this.infoOpinion.user;
-    this.newComment = this.infoOpinion.comment;
   },
 
   methods: {
     returnToAdmin() {
-      this.$router.push("/administration");
+      this.$router.push('/administration');
     },
 
     editComment() {
-      let newCommentData = {
-        user: this.newNameUser,
-        comment: this.newComment,
-        index: this.$route.params.index
-      };
 
-      if (this.newNameUser || this.newComment) {
-        this.$store.dispatch("editOpinion", newCommentData);
-        this.$router.push("/administration");
-      } else {
-        alert("Ingrese datos para modificar");
-        this.newNameUser = "";
-        this.newComment = "";
-      }
+      // if (this.newNameUser &&  this.newComment) {
+        let newCommentData = {
+          user: this.newNameUser,
+          comment: this.newComment,
+          index: this.$route.params.index
+        };
+
+        this.$store.dispatch('editOpinion', newCommentData);
+        this.$router.push('/administration');
+
+      // } else {
+      //   alert("Ingrese datos para modificar");
+      // }
     },
   },
 };

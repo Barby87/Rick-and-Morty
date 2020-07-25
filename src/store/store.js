@@ -51,8 +51,8 @@ export default new Vuex.Store({
 
     editingOpinion(state, newCommentReceived) {
       // Modificando valores del objeto
-      state.comments[newCommentReceived.user] = newCommentReceived.user;
-      state.comments[newCommentReceived.commment] = newCommentReceived.comment;
+      state.comments[newCommentReceived.index].user = newCommentReceived.user;
+      state.comments[newCommentReceived.index].comment = newCommentReceived.comment;
     }
   },
 

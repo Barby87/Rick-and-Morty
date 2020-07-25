@@ -12,7 +12,7 @@
             </h5>
           </div>
       
-          <div :id="`collapse-${index}`" class="collapse show px-3" aria-labelledby="headingOne" :data-parent="`#accordion-${index}`">
+          <div :id="`collapse-${index}`" class="collapse px-3" aria-labelledby="headingOne" :data-parent="`#accordion-${index}`">
             <div class="card-body text-justify">
               {{item.comment}}
             </div>
@@ -44,7 +44,7 @@ export default {
 
 .btn-link {
     // font-weight: bold!important;
-    color: rgb(6, 3, 199)!important;
+    color: rgb(3, 1, 105)!important;
     text-decoration: none!important;
 
     &:hover {

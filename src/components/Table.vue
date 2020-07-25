@@ -52,7 +52,7 @@
       </table>
 
       <!-- Botón para borrar opiniones -->
-      <button type="button" class="btn btn-warning" @click="restart">Reiniciar</button>     
+      <button type="button" class="btn btn-warning" @click="restart">Borrar datos</button>     
     </div>
 
     <!-- Alert -->
@@ -78,7 +78,7 @@ export default {
     },
 
     editEvent(index) {
-      this.$router.push(`/edit-opinion/:${index}`);
+      this.$router.push(`/edit-opinion/${index}`);
     },
 
     restart(){

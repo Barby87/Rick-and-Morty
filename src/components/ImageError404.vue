@@ -6,7 +6,7 @@
           </div>
           
           <div>
-              <button class="btn btn-warning" @click="returnToHome">Volver al inicio</button>
+              <router-link to="/" tag="button" class="btn btn-secondary">Volver al inicio</router-link>
           </div>  
       </div>
   </div>
@@ -21,16 +21,13 @@ export default {
         return {
             imgError: Error404
         }
-    },
-
-    methods: {
-        returnToHome() {
-            this.$router.push('/');
-        }
     }
 }
 </script>
 
-<style>
-
+<style scoped>
+img {
+    width: 100vw;
+    height: 70vh;
+}
 </style>
