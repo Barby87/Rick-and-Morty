@@ -68,7 +68,7 @@
                       <p><strong>Especie: </strong> {{item.species}}</p>
                       <p><strong>Ubicación: </strong>{{item.location.name}}</p>
                       <p><strong>Cantidad de episodios: </strong>{{item.episode.length}}</p>
-                      <p><strong>Fecha de creación: </strong>{{item.created}}</p>
+                      <p><strong>Fecha de creación: </strong>{{item.created.slice(0,10)}}</p>
                     </div>                 
                 </div> 
               </div>
