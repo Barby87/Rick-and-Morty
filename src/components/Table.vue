@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container d-flex justify-content-center">
     <div v-if="arrayOpinions.length > 0">
       <h1 class="my-5">Administración</h1>
       
       <!-- Tabla dinámica-->
-      <table class="table table-hover">
+      <table class="table table-hover table-responsive-sm">
         <thead>
           <tr>
             <th>N°</th>

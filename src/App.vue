@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <NavBar/>
-    <router-view class="my-5 py-5" />
+    <router-view class="my-5 py-5"/>
     <Footer class="mt-3"/>
   </div>
 </template>
@@ -28,6 +28,9 @@ export default {
 </script>
 
 <style lang="scss">
+#app {
+  min-height: 100vh;
+}
 
 h1 {
   text-align: center;

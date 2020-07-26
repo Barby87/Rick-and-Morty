@@ -74,7 +74,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <a type="button" class="btn btn-success" data-dismiss="modal" @click="favorite(item)">Guardar en Favoritos</a>
+                <button type="button" class="btn btn-success" data-dismiss="modal" @click="favorite(item)">Guardar en Favoritos</button>
               </div>
             </div>
           </div>

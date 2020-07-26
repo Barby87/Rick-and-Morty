@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 export default {
   name: 'Favorites',
   computed: {
@@ -35,9 +36,27 @@ export default {
 
   methods: {
     deleteFav(index) {
-      if(confirm('¿Desea eliminar?')) {
+      Swal.fire({
+        title: '¿Desea eliminar?',
+        text: "Esta acción no se puede revertir",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar'
+      }).then((result) => {
+        if (result.value) {
         this.$store.dispatch('deleteFavorite', index);
-      }
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
+      })
+      // if(confirm('¿Desea eliminar?')) {
+      //   this.$store.dispatch('deleteFavorite', index);
+      // }
     }
   }
 }
