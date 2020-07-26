@@ -37,6 +37,7 @@
 <script>
 //Inicializar variable '$' de jQuery
 import $ from "jquery";
+import Swal from 'sweetalert2';
 export default {
   data() {
     return {
@@ -73,8 +74,14 @@ export default {
         this.$router.push('/administration');
 
       } else {
-        alert('Ingrese datos para modificar');
-        this.$router.push('/administration');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Ingrese datos para modificar',
+        }).then(() => {
+          this.$router.push('/administration');
+        })
+        // alert('Ingrese datos para modificar');
       }
     },
   },
